@@ -5,7 +5,7 @@ This is a small simulator written in 'C' that mimics (more or less) how memory a
 
 
 ## What does it do?
-It has multiple commands that the user can use to simulate a virtual allocator.
+It has multiple commands that the user can use to simulate a memory allocator.
 
 1.	ALLOC_ARENA <size_of_arena> : Creates the space where all the memory will be alocated.
 2.	DEALLOC_ARENA : Frees the arena and all memory allocated in it.
