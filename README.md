@@ -7,14 +7,14 @@ This is a small simulator written in 'C' that mimics (more or less) how memory a
 ## What does it do?
 It has multiple commands that the user can use to simulate a virtual allocator.
 
-1.	ALLOC_ARENA <size> : Creates the space where all the memory will be alocated.
+1.	ALLOC_ARENA <size_of_arena> : Creates the space where all the memory will be alocated.
 2.	DEALLOC_ARENA : Frees the arena and all memory allocated in it.
-3.	ALLOC_BLOCK <arena_address> <size> : Allocates a block at the chosen address with the chosen size. Inside each block are 1 or more miniblocks where the data will be written. If 2 blocks are right next to eachother, they merge and the their miniblocks will be in the same new block.
+3.	ALLOC_BLOCK <arena_address> <size_of_arena> : Allocates a block at the chosen address with the chosen size. Inside each block are 1 or more miniblocks where the data will be written. If 2 blocks are right next to eachother, they merge and the their miniblocks will be in the same new block.
 4.	FREE_BLOCK <arena_address> : Frees the miniblock with the chosen starting address.
-6.	WRITE <arena_address> <size> <data> : Writes data at the chosen address. The introduced data must have its length equal to the size introduced before it.
-5.	READ <arena_address> <size> : Reads the data starting from the chosen address and prints it in the console. The printed data will have its size equal to the the size introduced.
+6.	WRITE <arena_address> <size_of_write> <data_to_write> : Writes data at the chosen address. The introduced data must have its length equal to the size introduced before it.
+5.	READ <arena_address> <size_of_read> : Reads the data starting from the chosen address and prints it in the console. The printed data will have its size equal to the the size introduced.
 7.	PMAP : Prints information about the arena and all the blocks allocated in it.
-8.	MPROTECT <arena_address> <permissions> : Changes the permission of a miniblock. When a miniblock is alloced, it will automatically gain permission to read and write. Instead of <permissions>, put one or more of the following inputs: PROT_NONE | PROT_READ | PROT_WRITE | PROT_EXEC. To write or read in a miniblock, all the miniblocks from his block must have their respective permissions valid.
+8.	MPROTECT <arena_address> <permissions_to_give> : Changes the permission of a miniblock. When a miniblock is alloced, it will automatically gain permission to read and write. Instead of <permissions>, put one or more of the following inputs: PROT_NONE | PROT_READ | PROT_WRITE | PROT_EXEC. To write or read in a miniblock, all the miniblocks from his block must have their respective permissions valid.
 
 ## Code structure and implementation
 Linked lists were used to implement the memory allocator. The arena is a big struct that stores information about it's contents like 'the number of blocks'/'the number of miniblocks'/'remaining data'/etc and has a pointer to the list of blocks.
@@ -40,7 +40,3 @@ Implementing a get_miniblock() function to make the code look cleaner in some pa
 
 
 Note: ALWAYS START THE PROGRAM WITH ALLOC_ARENA AND END IT WITH DEALLOC_ARENA. DOING OTHERWISE WILL MOST LIKELY RESULT IN A CRASH/SEGMENTATION FAULT.
-
-Also note: There are comments in the code to help other readers (and even the creator) understand it and what happens in each section.
-
-Last note: I didn't use 'list in list' like the homework wanted me to because I found it absolutely unecessarry. Literally no point in using it other than getting used to this kind of code arhitecture.
