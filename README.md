@@ -33,10 +33,10 @@ Reading data in a miniblock will only read zones in rw_buffer with written text 
 Whenever something wrong happens in the program, an error will appear with a suggestive name that indicates what the problem was.
 
 ### What could have been done better
-Using a double linked list instead of a simple linked list to help improve on time in alloc_block by a bit.
+Using a double linked list instead of a simple linked list for a time improvement.
 
-Implementing a get_miniblock() function to make the code look cleaner in some parts.
+Implementing a get_miniblock() function to make the code look cleaner for the reader.
 
 
 
-Note: ALWAYS START THE PROGRAM WITH ALLOC_ARENA AND END IT WITH DEALLOC_ARENA. DOING OTHERWISE WILL MOST LIKELY RESULT IN A CRASH/SEGMENTATION FAULT.
+Note: ALWAYS START THE PROGRAM WITH ALLOC_ARENA AND END IT WITH DEALLOC_ARENA. DOING OTHERWISE WILL MOST LIKELY RESULT IN A CRASH/SEG FAULT.
