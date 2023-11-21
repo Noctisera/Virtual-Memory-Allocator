@@ -1,4 +1,4 @@
-# README Virtual Memory Allocator
+# Virtual Memory Allocator
 
 ## Description
 This is a small simulator written in 'C' that mimics (more or less) how memory allocation works on computers.
